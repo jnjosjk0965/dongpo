@@ -17,7 +17,15 @@ class AppShell extends StatefulWidget {
 
 class _AppShellState extends State<AppShell> {
   void _onItemTapped(int index, BuildContext context) {
-    GoRouter.of(context).go("/home");
+    if (index == 0) {
+      GoRouter.of(context).go("/home");
+    } else if (index == 1) {
+      GoRouter.of(context).push("/add");
+    } else if (index == 2) {
+      GoRouter.of(context).go("/recommend");
+    } else if (index == 3) {
+      GoRouter.of(context).go("/my");
+    }
   }
 
   @override
