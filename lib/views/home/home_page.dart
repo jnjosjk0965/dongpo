@@ -3,13 +3,13 @@ import 'package:dongpo/view_model/home/map_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mapState = ref.watch(mapViewModelProvider);
     final mapViewModel = ref.read(mapViewModelProvider.notifier);
 
     return Scaffold(
@@ -24,11 +24,13 @@ class HomePage extends ConsumerWidget {
             },
           ),
           Positioned(
-            top: 65.0,
+            top: 50.0,
             left: 16.0,
             right: 16.0,
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                context.push("/home/search");
+              },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
                 decoration: BoxDecoration(

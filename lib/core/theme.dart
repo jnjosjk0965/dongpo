@@ -17,6 +17,7 @@ final ThemeData dongpoDefaultTheme = ThemeData(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(),
   inputDecorationTheme: InputDecorationTheme(
+    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
     border: OutlineInputBorder(
       // 기본 적용 스타일
       borderRadius: BorderRadius.circular(12),

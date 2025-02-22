@@ -1,6 +1,7 @@
 import 'package:dongpo/views/add_store/add_store_page.dart';
 import 'package:dongpo/views/app_shell.dart';
 import 'package:dongpo/views/home/home_page.dart';
+import 'package:dongpo/views/home/search_page.dart';
 import 'package:dongpo/views/my/my_page.dart';
 import 'package:dongpo/views/recommend/recommend_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,9 +31,14 @@ final router = GoRouter(
       ),
       routes: [
         GoRoute(
-          path: "/home",
-          builder: (context, state) => HomePage(),
-        ),
+            path: "/home",
+            builder: (context, state) => HomePage(),
+            routes: [
+              GoRoute(
+                path: 'search',
+                builder: (context, state) => SearchPage(),
+              ),
+            ]),
         GoRoute(
           path: "/recommend",
           builder: (context, state) => RecommendPage(),
