@@ -14,8 +14,8 @@ void main() async {
     onAuthFailed: (e) => Log.e("naver map auth failed $e"),
   );
   runApp(
-    ProviderScope(
-      child: const MyApp(),
+    const ProviderScope(
+      child: MyApp(),
     ),
   );
 }
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       routerConfig: router,
       themeAnimationStyle: AnimationStyle(
         curve: Curves.easeInCirc,
-        duration: Duration(
+        duration: const Duration(
           milliseconds: 350,
         ),
       ),

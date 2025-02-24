@@ -1,5 +1,4 @@
 import 'package:dongpo/core/theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -21,34 +20,34 @@ class _RecommendPageState extends State<RecommendPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "별별 사람들",
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Gap(24),
+                const Gap(24),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
                       _buildCard(top10Title: "방문 인증 횟수 top 10"),
-                      Gap(24),
+                      const Gap(24),
                       _buildCard(top10Title: "가게 등록 횟수 top 10"),
-                      Gap(24),
+                      const Gap(24),
                       _buildCard(top10Title: "가게 리뷰 횟수 top 10"),
                     ],
                   ),
                 ),
-                Gap(24),
+                const Gap(24),
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(16),
+                  decoration: const BoxDecoration(
                     color: AppColors.white,
                   ),
-                  child: Column(
+                  child: const Column(
                     children: [
                       Text("추천해요"),
                     ],
@@ -66,7 +65,6 @@ class _RecommendPageState extends State<RecommendPage> {
     required String top10Title,
     String? member,
     String? memberTitle,
-    String? memberProfile,
     List<dynamic>? top10List,
   }) {
     return GestureDetector(
@@ -82,10 +80,10 @@ class _RecommendPageState extends State<RecommendPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 16),
+              padding: const EdgeInsets.only(top: 16),
               child: Text(
                 top10Title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),
@@ -93,7 +91,7 @@ class _RecommendPageState extends State<RecommendPage> {
             ),
             top10List == null || top10List.isEmpty
                 ? Padding(
-                    padding: EdgeInsets.only(top: 50),
+                    padding: const EdgeInsets.only(top: 50),
                     child: Text(
                       "아직 참여한 분이 없어요",
                       style: TextStyle(
@@ -106,27 +104,27 @@ class _RecommendPageState extends State<RecommendPage> {
                   )
                 : Column(
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(top: 29),
                         child: CircleAvatar(
                           radius: 24,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 19),
+                        padding: const EdgeInsets.only(top: 19),
                         child: Text(
                           memberTitle ?? "",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 4),
+                        padding: const EdgeInsets.only(top: 4),
                         child: Text(
                           member ?? "",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),

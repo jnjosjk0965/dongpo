@@ -32,12 +32,13 @@ class HomePage extends ConsumerWidget {
                 context.push("/home/search");
               },
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 16.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
-                    BoxShadow(
+                    const BoxShadow(
                       offset: Offset(0, 8),
                       color: Colors.black12,
                       blurRadius: 10,
@@ -55,7 +56,7 @@ class HomePage extends ConsumerWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Icon(
                       Icons.search,
                       color: AppColors.grey[300],

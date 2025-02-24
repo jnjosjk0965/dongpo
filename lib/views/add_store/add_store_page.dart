@@ -17,7 +17,7 @@ class _AddStorePageState extends State<AddStorePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("가게 등록"),
+        title: const Text("가게 등록"),
       ),
       body: Stack(
         children: [
@@ -31,7 +31,7 @@ class _AddStorePageState extends State<AddStorePage> {
               );
             },
           ),
-          Center(
+          const Center(
             child: Icon(
               Icons.location_pin,
               size: 40,
@@ -51,8 +51,9 @@ class _AddStorePageState extends State<AddStorePage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-                decoration: BoxDecoration(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                decoration: const BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(12),
@@ -63,25 +64,25 @@ class _AddStorePageState extends State<AddStorePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "가게 위치를 알려주세요",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
                       ),
                     ),
-                    Gap(24),
+                    const Gap(24),
                     Container(
                       height: 42,
                       decoration: BoxDecoration(
                         color: AppColors.grey[100],
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text("주소"),
                       ),
                     ),
-                    Gap(16),
+                    const Gap(16),
                     GestureDetector(
                       onTap: () {},
                       child: Container(
@@ -90,7 +91,7 @@ class _AddStorePageState extends State<AddStorePage> {
                           color: AppColors.primary,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             "가게 등록",
                             style: TextStyle(

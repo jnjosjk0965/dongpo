@@ -30,10 +30,10 @@ class _MyPageState extends State<MyPage> {
               Row(
                 children: [
                   // 프로필 사진
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 48,
                   ),
-                  Gap(32),
+                  const Gap(32),
                   // 유저 정보
                   Expanded(
                     child: Column(
@@ -44,7 +44,7 @@ class _MyPageState extends State<MyPage> {
                             color: AppColors.secondary,
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Text(
+                          child: const Text(
                             "칭호",
                             style: TextStyle(
                               fontSize: 16,
@@ -53,9 +53,9 @@ class _MyPageState extends State<MyPage> {
                             ),
                           ),
                         ),
-                        Gap(8),
+                        const Gap(8),
                         // 닉네임
-                        Text(
+                        const Text(
                           "닉네임",
                           style: TextStyle(
                             fontSize: 32,
@@ -67,7 +67,7 @@ class _MyPageState extends State<MyPage> {
                   ),
                 ],
               ),
-              Gap(48),
+              const Gap(48),
               //프로필 편집
               InkWell(
                 onTap: () {
@@ -91,16 +91,16 @@ class _MyPageState extends State<MyPage> {
                   ),
                 ),
               ),
-              Gap(24),
+              const Gap(24),
               // 사용자 활동
               Container(
-                padding: EdgeInsets.all(24),
+                padding: const EdgeInsets.all(24),
                 child: Row(
                   children: [
                     // 등록한 가게
                     GestureDetector(
                       onTap: () {},
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -125,7 +125,7 @@ class _MyPageState extends State<MyPage> {
                     ),
                     GestureDetector(
                       onTap: () {},
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -151,9 +151,9 @@ class _MyPageState extends State<MyPage> {
                   ],
                 ),
               ),
-              Gap(24),
+              const Gap(24),
               ListTile(
-                title: Text(
+                title: const Text(
                   "내가 쓴 리뷰",
                   style: TextStyle(
                     fontSize: 16,
@@ -161,11 +161,11 @@ class _MyPageState extends State<MyPage> {
                     color: Colors.black,
                   ),
                 ),
-                trailing: Icon(Icons.keyboard_arrow_right),
+                trailing: const Icon(Icons.keyboard_arrow_right),
                 onTap: () {},
               ),
               ListTile(
-                title: Text(
+                title: const Text(
                   "북바크한 가게",
                   style: TextStyle(
                     fontSize: 16,
@@ -173,11 +173,11 @@ class _MyPageState extends State<MyPage> {
                     color: Colors.black,
                   ),
                 ),
-                trailing: Icon(Icons.keyboard_arrow_right),
+                trailing: const Icon(Icons.keyboard_arrow_right),
                 onTap: () {},
               ),
               Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

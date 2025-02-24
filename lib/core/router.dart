@@ -2,6 +2,7 @@ import 'package:dongpo/views/add_store/add_store_page.dart';
 import 'package:dongpo/views/app_shell.dart';
 import 'package:dongpo/views/home/home_page.dart';
 import 'package:dongpo/views/home/search_page.dart';
+import 'package:dongpo/views/login/login_page.dart';
 import 'package:dongpo/views/my/my_page.dart';
 import 'package:dongpo/views/recommend/recommend_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,13 +12,18 @@ final _rootNavKey = GlobalKey<NavigatorState>();
 final _shellNavKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
-  initialLocation: "/home",
+  initialLocation: "/login",
   navigatorKey: _rootNavKey,
   routes: [
     GoRoute(
+      path: "/login",
+      parentNavigatorKey: _rootNavKey,
+      builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
       path: "/add",
       parentNavigatorKey: _rootNavKey,
-      builder: (context, state) => AddStorePage(),
+      builder: (context, state) => const AddStorePage(),
     ),
     ShellRoute(
       navigatorKey: _shellNavKey,
@@ -32,20 +38,20 @@ final router = GoRouter(
       routes: [
         GoRoute(
             path: "/home",
-            builder: (context, state) => HomePage(),
+            builder: (context, state) => const HomePage(),
             routes: [
               GoRoute(
                 path: 'search',
-                builder: (context, state) => SearchPage(),
+                builder: (context, state) => const SearchPage(),
               ),
             ]),
         GoRoute(
           path: "/recommend",
-          builder: (context, state) => RecommendPage(),
+          builder: (context, state) => const RecommendPage(),
         ),
         GoRoute(
           path: "/my",
-          builder: (context, state) => MyPage(),
+          builder: (context, state) => const MyPage(),
         ),
       ],
     ),

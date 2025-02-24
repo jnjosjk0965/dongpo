@@ -19,14 +19,14 @@ class _SearchPageState extends State<SearchPage> {
               children: [
                 IconButton(
                   onPressed: () => context.pop(),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.keyboard_arrow_left,
                     size: 24,
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 16.0),
+                    padding: EdgeInsets.only(right: 16.0),
                     child: TextField(),
                   ),
                 ),
@@ -36,14 +36,15 @@ class _SearchPageState extends State<SearchPage> {
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
                     child: Row(
                       children: [
-                        Text("data"),
-                        Spacer(),
+                        const Text("data"),
+                        const Spacer(),
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.close,
                           ),
                         )

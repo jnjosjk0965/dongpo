@@ -18,7 +18,7 @@ class AddStoreState with _$AddStoreState {
 class AddStoreViewModel extends _$AddStoreViewModel {
   @override
   AddStoreState build() {
-    return AddStoreState();
+    return const AddStoreState();
   }
 
   void setController(NaverMapController controller) {

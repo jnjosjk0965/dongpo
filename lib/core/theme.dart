@@ -10,14 +10,14 @@ final ThemeData dongpoDefaultTheme = ThemeData(
     unselectedItemColor: AppColors.grey[400],
     enableFeedback: false, // 선택시 효과음
   ),
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     backgroundColor: Colors.white,
     foregroundColor: Colors.black,
     surfaceTintColor: Colors.white,
   ),
-  outlinedButtonTheme: OutlinedButtonThemeData(),
+  outlinedButtonTheme: const OutlinedButtonThemeData(),
   inputDecorationTheme: InputDecorationTheme(
-    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+    contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
     border: OutlineInputBorder(
       // 기본 적용 스타일
       borderRadius: BorderRadius.circular(12),
@@ -34,14 +34,14 @@ final ThemeData dongpoDefaultTheme = ThemeData(
         width: 1.0,
       ),
     ),
-    focusedBorder: OutlineInputBorder(
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(
         color: AppColors.primary,
         width: 1.0,
       ),
     ),
   ),
-  dialogTheme: DialogTheme(),
+  dialogTheme: const DialogTheme(),
 );
 
 class AppColors extends Color {

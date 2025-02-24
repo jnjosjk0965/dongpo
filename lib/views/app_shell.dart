@@ -36,19 +36,19 @@ class _AppShellState extends State<AppShell> {
         currentIndex: widget.currentIndex,
         onTap: (int index) => _onItemTapped(index, context),
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "홈",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.create),
             label: "가게 등록",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.description),
             label: "추천",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "마이페이지",
           ),
