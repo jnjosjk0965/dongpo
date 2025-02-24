@@ -60,5 +60,5 @@ flutter:
           weight: 900
     - family: Chosun
       fonts:
-        - asset: assets/fonts/ChosunCentennial_ttf.ttf
+        - asset: assets/fonts/ChosunCentennial.ttf
           weight: 600
