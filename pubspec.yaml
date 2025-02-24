@@ -21,15 +21,19 @@ dependencies:
   go_router: ^14.8.0
   logger: ^2.5.0
   gap: ^3.0.1
+  dio: ^5.8.0+1
+  retrofit: ^4.4.2
+  kakao_flutter_sdk_user: ^1.9.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
   build_runner: ^2.4.15
-  freezed: ^2.5.8
   json_serializable: ^6.9.4
   riverpod_generator: ^2.6.4
+  freezed: ^2.5.8
+  retrofit_generator: ^9.1.9
 
 flutter:
   uses-material-design: true
