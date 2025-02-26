@@ -5,9 +5,14 @@ import 'package:dongpo/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Kakao SDK 초기화
+  KakaoSdk.init(
+    nativeAppKey: ApiKey.kakaoNativeAppKey,
+  );
   // 지도 초기화
   await NaverMapSdk.instance.initialize(
     clientId: ApiKey.naverApiKey,

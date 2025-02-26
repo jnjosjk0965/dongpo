@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:dongpo/core/log.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,6 +15,25 @@ Dio dio(Ref ref) {
     },
     connectTimeout: const Duration(seconds: 30),
     receiveTimeout: const Duration(seconds: 30),
+    validateStatus: (status) => status != null, // status null 아닐때
   );
   return Dio(options);
+}
+
+class DioInterceptor extends Interceptor {
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    final status = response.statusCode!;
+    final isSuccess = status >= 200 && status < 300;
+    Log.d("status code: $status");
+    Log.d("data: ${response.data}");
+    if (!isSuccess) {
+      throw DioException.badResponse(
+        statusCode: status,
+        requestOptions: response.requestOptions,
+        response: response,
+      );
+    }
+    super.onResponse(response, handler);
+  }
 }

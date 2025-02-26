@@ -28,7 +28,7 @@ class AuthService {
         Log.d(
             "kakaoTalk login accessToken: ${oAuthToken.accessToken.toString()}");
       } catch (e) {
-        Log.e("kakaoTalk login failed: $e");
+        Log.w("kakaoTalk login failed: $e");
         if (e is PlatformException && e.code == "CANCELED") {
           // 로그인 취소
           return null;

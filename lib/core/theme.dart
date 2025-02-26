@@ -41,7 +41,20 @@ final ThemeData dongpoDefaultTheme = ThemeData(
       ),
     ),
   ),
-  dialogTheme: const DialogTheme(),
+  dialogTheme: DialogTheme(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+    titleTextStyle: const TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    contentTextStyle: const TextStyle(
+      fontSize: 16,
+      color: Colors.black87,
+    ),
+  ),
 );
 
 class AppColors extends Color {

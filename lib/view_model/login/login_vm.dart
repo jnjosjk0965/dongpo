@@ -1,4 +1,5 @@
-import 'package:dongpo/model/login/login_request_model.dart';
+import 'package:dio/dio.dart';
+import 'package:dongpo/core/log.dart';
 import 'package:dongpo/model/login/login_response_model.dart';
 import 'package:dongpo/repository/login/login_repo.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -26,24 +27,37 @@ class LoginState with _$LoginState {
   }
 }
 
-@Riverpod()
+@Riverpod(keepAlive: true)
 class LoginVm extends _$LoginVm {
   @override
   LoginState build() {
     return LoginState.init();
   }
 
-  Future<bool> kakaoLogin(KakaoLoginRequest body) async {
-    final response = await ref.watch(loginRepositoryProvider).kakaoLogin(body);
-    if (response != null) {
-      final data = response.data;
-      state = state.copyWith(
-        isLogin: true,
-        email: data.claims,
-        accessToken: data.accessToken,
-        refreshToken: data.refreshToken,
-      );
+  Future<LoginResult> kakaoLogin() async {
+    try {
+      final response = await ref.watch(loginRepositoryProvider).kakaoLogin();
+      if (response != null) {
+        final data = response.data;
+        state = state.copyWith(
+          isLogin: true,
+          email: data.claims,
+          accessToken: data.accessToken,
+          refreshToken: data.refreshToken,
+        );
+      }
+      return const LoginResult(
+          type: LoginResultType.success, message: "로그인 성공");
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.badResponse) {
+        return LoginResult(
+            type: LoginResultType.failure, message: e.message ?? "");
+      }
+    } catch (e) {
+      return const LoginResult(
+          type: LoginResultType.error, message: "로그인에 실패했습니다.");
     }
-    return false;
+    return const LoginResult(
+        type: LoginResultType.error, message: "오류가 발생했습니다.");
   }
 }

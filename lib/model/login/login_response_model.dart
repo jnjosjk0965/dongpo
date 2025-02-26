@@ -3,6 +3,18 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'login_response_model.g.dart';
 part 'login_response_model.freezed.dart';
 
+enum LoginResultType { success, failure, error }
+
+class LoginResult {
+  final LoginResultType type;
+  final String message;
+
+  const LoginResult({
+    required this.type,
+    required this.message,
+  });
+}
+
 @freezed
 class LoginResponseModel with _$LoginResponseModel {
   const factory LoginResponseModel({
