@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 part 'login_api_service.g.dart';
 
@@ -57,5 +58,35 @@ class AuthService {
       }
     }
     return oAuthToken.accessToken;
+  }
+
+  Future<List<String>> loginWithApple() async {
+    try {
+      final AuthorizationCredentialAppleID appleID =
+          await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+      final String? identityToken = appleID.identityToken;
+      final String authCode = appleID.authorizationCode;
+      Log.d("Apple login userIdentifier: ${appleID.userIdentifier}");
+      Log.d("Apple login identityToken: $identityToken");
+      Log.d("Apple login authorizationCode: $authCode");
+
+      if (identityToken != null) {
+        return [
+          identityToken,
+          authCode,
+        ];
+      } else {
+        Log.w("Apple login failed: no identity token");
+      }
+    } catch (e, st) {
+      Log.e(e.toString());
+      Log.e(st.toString());
+    }
+    return [];
   }
 }

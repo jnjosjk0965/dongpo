@@ -24,6 +24,7 @@ dependencies:
   dio: ^5.8.0+1
   retrofit: ^4.4.2
   kakao_flutter_sdk_user: ^1.9.6
+  sign_in_with_apple: ^6.1.4
 
 dev_dependencies:
   flutter_test:

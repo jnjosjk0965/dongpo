@@ -45,9 +45,11 @@ class LoginVm extends _$LoginVm {
           accessToken: data.accessToken,
           refreshToken: data.refreshToken,
         );
+        return const LoginResult(
+            type: LoginResultType.success, message: "로그인 성공");
+      } else {
+        throw Exception();
       }
-      return const LoginResult(
-          type: LoginResultType.success, message: "로그인 성공");
     } on DioException catch (e) {
       if (e.type == DioExceptionType.badResponse) {
         return LoginResult(
@@ -59,5 +61,28 @@ class LoginVm extends _$LoginVm {
     }
     return const LoginResult(
         type: LoginResultType.error, message: "오류가 발생했습니다.");
+  }
+
+  Future<LoginResult> appleLogin() async {
+    try {
+      final response = await ref.watch(loginRepositoryProvider).appleLogin();
+      if (response != null) {
+        final data = response.data;
+        state = state.copyWith(
+          isLogin: true,
+          email: data.claims,
+          accessToken: data.accessToken,
+          refreshToken: data.refreshToken,
+        );
+        return const LoginResult(
+            type: LoginResultType.success, message: "로그인 성공");
+      } else {
+        throw Exception();
+      }
+    } catch (e) {
+      Log.e(e.toString());
+      return const LoginResult(
+          type: LoginResultType.error, message: "오류가 발생했습니다.");
+    }
   }
 }

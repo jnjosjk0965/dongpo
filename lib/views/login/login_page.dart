@@ -36,26 +36,54 @@ class _LoginPageState extends State<LoginPage> {
             // 소셜 로그인 - 애플
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: GestureDetector(
-                onTap: () {
-                  context.go("/home");
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 42,
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      "assets/images/login_apple.png",
-                      fit: BoxFit.contain,
+              child: Consumer(builder: (context, ref, child) {
+                return GestureDetector(
+                  onTap: () async {
+                    final result =
+                        await ref.read(loginVmProvider.notifier).appleLogin();
+                    switch (result.type) {
+                      case LoginResultType.success:
+                        if (context.mounted) context.go("/home");
+                        break;
+                      case LoginResultType.failure:
+                      case LoginResultType.error:
+                        if (context.mounted) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text("로그인 실패"),
+                              content: Text(result.message),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.of(context).pop(),
+                                  child: const Text(
+                                    "확인",
+                                    style: TextStyle(color: AppColors.primary),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                    }
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        "assets/images/login_apple.png",
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
-                ),
-              ),
+                );
+              }),
             ),
             // 소셜 로그인 - 카카오
             Padding(
@@ -75,12 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
-                              title: const Text(
-                                "로그인 실패",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
+                              title: const Text("로그인 실패"),
                               content: Text(result.message),
                               actions: [
                                 TextButton(

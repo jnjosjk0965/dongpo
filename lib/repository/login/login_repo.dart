@@ -26,8 +26,17 @@ class LoginRepository {
     return result.data;
   }
 
-  Future<LoginResponseModel> appleLogin(AppleLoginRequest body) async {
-    final result = await loginApi.appleLogin(body);
+  Future<LoginResponseModel?> appleLogin() async {
+    final credential = await authService.loginWithApple();
+    if (credential.isEmpty) {
+      return null;
+    }
+    final result = await loginApi.appleLogin(
+      AppleLoginRequest(
+        identityToken: credential[0],
+        authorizationCode: credential[1],
+      ),
+    );
     return result.data;
   }
 

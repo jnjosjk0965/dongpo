@@ -1,7 +1,11 @@
 import 'package:logger/web.dart';
 
 class Log {
-  static final Logger _logger = Logger(printer: PrettyPrinter());
+  static final Logger _logger = Logger(
+      printer: PrettyPrinter(
+    printEmojis: false,
+    noBoxingByDefault: true,
+  ));
 
   // debug
   static void d(String message) {
