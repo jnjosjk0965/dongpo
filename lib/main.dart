@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
           milliseconds: 350,
         ),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

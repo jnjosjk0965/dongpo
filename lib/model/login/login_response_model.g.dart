@@ -12,7 +12,7 @@ _$LoginResponseModelImpl _$$LoginResponseModelImplFromJson(
       code: json['code'] as String?,
       message: json['message'] as String?,
       data: json['data'] == null
-          ? const LoginDataModel()
+          ? null
           : LoginDataModel.fromJson(json['data'] as Map<String, dynamic>),
     );
 

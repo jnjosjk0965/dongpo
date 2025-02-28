@@ -3,6 +3,7 @@ import 'package:dongpo/views/app_shell.dart';
 import 'package:dongpo/views/home/home_page.dart';
 import 'package:dongpo/views/home/search_page.dart';
 import 'package:dongpo/views/login/login_page.dart';
+import 'package:dongpo/views/login/splash_page.dart';
 import 'package:dongpo/views/my/my_page.dart';
 import 'package:dongpo/views/recommend/recommend_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,9 +13,14 @@ final _rootNavKey = GlobalKey<NavigatorState>();
 final _shellNavKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
-  initialLocation: "/login",
+  initialLocation: "/splash",
   navigatorKey: _rootNavKey,
   routes: [
+    GoRoute(
+      path: "/splash",
+      parentNavigatorKey: _rootNavKey,
+      builder: (context, state) => const SplashPage(),
+    ),
     GoRoute(
       path: "/login",
       parentNavigatorKey: _rootNavKey,

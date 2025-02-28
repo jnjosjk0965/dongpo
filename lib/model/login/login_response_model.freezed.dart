@@ -22,7 +22,7 @@ LoginResponseModel _$LoginResponseModelFromJson(Map<String, dynamic> json) {
 mixin _$LoginResponseModel {
   String? get code => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
-  LoginDataModel get data => throw _privateConstructorUsedError;
+  LoginDataModel? get data => throw _privateConstructorUsedError;
 
   /// Serializes this LoginResponseModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,9 +40,9 @@ abstract class $LoginResponseModelCopyWith<$Res> {
           LoginResponseModel value, $Res Function(LoginResponseModel) then) =
       _$LoginResponseModelCopyWithImpl<$Res, LoginResponseModel>;
   @useResult
-  $Res call({String? code, String? message, LoginDataModel data});
+  $Res call({String? code, String? message, LoginDataModel? data});
 
-  $LoginDataModelCopyWith<$Res> get data;
+  $LoginDataModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$LoginResponseModelCopyWithImpl<$Res, $Val extends LoginResponseModel>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       code: freezed == code
@@ -73,10 +73,10 @@ class _$LoginResponseModelCopyWithImpl<$Res, $Val extends LoginResponseModel>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as LoginDataModel,
+              as LoginDataModel?,
     ) as $Val);
   }
 
@@ -84,8 +84,12 @@ class _$LoginResponseModelCopyWithImpl<$Res, $Val extends LoginResponseModel>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LoginDataModelCopyWith<$Res> get data {
-    return $LoginDataModelCopyWith<$Res>(_value.data, (value) {
+  $LoginDataModelCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $LoginDataModelCopyWith<$Res>(_value.data!, (value) {
       return _then(_value.copyWith(data: value) as $Val);
     });
   }
@@ -99,10 +103,10 @@ abstract class _$$LoginResponseModelImplCopyWith<$Res>
       __$$LoginResponseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? code, String? message, LoginDataModel data});
+  $Res call({String? code, String? message, LoginDataModel? data});
 
   @override
-  $LoginDataModelCopyWith<$Res> get data;
+  $LoginDataModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -120,7 +124,7 @@ class __$$LoginResponseModelImplCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_$LoginResponseModelImpl(
       code: freezed == code
@@ -131,10 +135,10 @@ class __$$LoginResponseModelImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as LoginDataModel,
+              as LoginDataModel?,
     ));
   }
 }
@@ -142,8 +146,7 @@ class __$$LoginResponseModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LoginResponseModelImpl implements _LoginResponseModel {
-  const _$LoginResponseModelImpl(
-      {this.code, this.message, this.data = const LoginDataModel()});
+  const _$LoginResponseModelImpl({this.code, this.message, this.data});
 
   factory _$LoginResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginResponseModelImplFromJson(json);
@@ -153,8 +156,7 @@ class _$LoginResponseModelImpl implements _LoginResponseModel {
   @override
   final String? message;
   @override
-  @JsonKey()
-  final LoginDataModel data;
+  final LoginDataModel? data;
 
   @override
   String toString() {
@@ -196,7 +198,7 @@ abstract class _LoginResponseModel implements LoginResponseModel {
   const factory _LoginResponseModel(
       {final String? code,
       final String? message,
-      final LoginDataModel data}) = _$LoginResponseModelImpl;
+      final LoginDataModel? data}) = _$LoginResponseModelImpl;
 
   factory _LoginResponseModel.fromJson(Map<String, dynamic> json) =
       _$LoginResponseModelImpl.fromJson;
@@ -206,7 +208,7 @@ abstract class _LoginResponseModel implements LoginResponseModel {
   @override
   String? get message;
   @override
-  LoginDataModel get data;
+  LoginDataModel? get data;
 
   /// Create a copy of LoginResponseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -222,10 +224,10 @@ LoginDataModel _$LoginDataModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LoginDataModel {
-  String? get grantType => throw _privateConstructorUsedError;
-  String? get claims => throw _privateConstructorUsedError;
-  String? get accessToken => throw _privateConstructorUsedError;
-  String? get refreshToken => throw _privateConstructorUsedError;
+  String get grantType => throw _privateConstructorUsedError;
+  String get claims => throw _privateConstructorUsedError;
+  String get accessToken => throw _privateConstructorUsedError;
+  String get refreshToken => throw _privateConstructorUsedError;
 
   /// Serializes this LoginDataModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -244,10 +246,10 @@ abstract class $LoginDataModelCopyWith<$Res> {
       _$LoginDataModelCopyWithImpl<$Res, LoginDataModel>;
   @useResult
   $Res call(
-      {String? grantType,
-      String? claims,
-      String? accessToken,
-      String? refreshToken});
+      {String grantType,
+      String claims,
+      String accessToken,
+      String refreshToken});
 }
 
 /// @nodoc
@@ -265,28 +267,28 @@ class _$LoginDataModelCopyWithImpl<$Res, $Val extends LoginDataModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? grantType = freezed,
-    Object? claims = freezed,
-    Object? accessToken = freezed,
-    Object? refreshToken = freezed,
+    Object? grantType = null,
+    Object? claims = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
-      grantType: freezed == grantType
+      grantType: null == grantType
           ? _value.grantType
           : grantType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      claims: freezed == claims
+              as String,
+      claims: null == claims
           ? _value.claims
           : claims // ignore: cast_nullable_to_non_nullable
-              as String?,
-      accessToken: freezed == accessToken
+              as String,
+      accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      refreshToken: freezed == refreshToken
+              as String,
+      refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -300,10 +302,10 @@ abstract class _$$LoginDataModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? grantType,
-      String? claims,
-      String? accessToken,
-      String? refreshToken});
+      {String grantType,
+      String claims,
+      String accessToken,
+      String refreshToken});
 }
 
 /// @nodoc
@@ -319,28 +321,28 @@ class __$$LoginDataModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? grantType = freezed,
-    Object? claims = freezed,
-    Object? accessToken = freezed,
-    Object? refreshToken = freezed,
+    Object? grantType = null,
+    Object? claims = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
     return _then(_$LoginDataModelImpl(
-      grantType: freezed == grantType
+      grantType: null == grantType
           ? _value.grantType
           : grantType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      claims: freezed == claims
+              as String,
+      claims: null == claims
           ? _value.claims
           : claims // ignore: cast_nullable_to_non_nullable
-              as String?,
-      accessToken: freezed == accessToken
+              as String,
+      accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      refreshToken: freezed == refreshToken
+              as String,
+      refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -359,16 +361,16 @@ class _$LoginDataModelImpl implements _LoginDataModel {
 
   @override
   @JsonKey()
-  final String? grantType;
+  final String grantType;
   @override
   @JsonKey()
-  final String? claims;
+  final String claims;
   @override
   @JsonKey()
-  final String? accessToken;
+  final String accessToken;
   @override
   @JsonKey()
-  final String? refreshToken;
+  final String refreshToken;
 
   @override
   String toString() {
@@ -413,22 +415,22 @@ class _$LoginDataModelImpl implements _LoginDataModel {
 
 abstract class _LoginDataModel implements LoginDataModel {
   const factory _LoginDataModel(
-      {final String? grantType,
-      final String? claims,
-      final String? accessToken,
-      final String? refreshToken}) = _$LoginDataModelImpl;
+      {final String grantType,
+      final String claims,
+      final String accessToken,
+      final String refreshToken}) = _$LoginDataModelImpl;
 
   factory _LoginDataModel.fromJson(Map<String, dynamic> json) =
       _$LoginDataModelImpl.fromJson;
 
   @override
-  String? get grantType;
+  String get grantType;
   @override
-  String? get claims;
+  String get claims;
   @override
-  String? get accessToken;
+  String get accessToken;
   @override
-  String? get refreshToken;
+  String get refreshToken;
 
   /// Create a copy of LoginDataModel
   /// with the given fields replaced by the non-null parameter values.

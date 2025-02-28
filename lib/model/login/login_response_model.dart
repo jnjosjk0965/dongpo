@@ -20,7 +20,7 @@ class LoginResponseModel with _$LoginResponseModel {
   const factory LoginResponseModel({
     String? code,
     String? message,
-    @Default(LoginDataModel()) LoginDataModel data,
+    LoginDataModel? data,
   }) = _LoginResponseModel;
 
   factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
@@ -30,10 +30,10 @@ class LoginResponseModel with _$LoginResponseModel {
 @freezed
 class LoginDataModel with _$LoginDataModel {
   const factory LoginDataModel({
-    @Default("") String? grantType,
-    @Default("") String? claims,
-    @Default("") String? accessToken,
-    @Default("") String? refreshToken,
+    @Default("") String grantType,
+    @Default("") String claims,
+    @Default("") String accessToken,
+    @Default("") String refreshToken,
   }) = _LoginDataModel;
 
   factory LoginDataModel.fromJson(Map<String, dynamic> json) =>

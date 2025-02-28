@@ -13,7 +13,7 @@ part 'login_api_service.g.dart';
 LoginApi loginApi(Ref ref) {
   final dio = ref.watch(dioProvider);
 
-  return LoginApi(dio);
+  return LoginApi(dio, baseUrl: "https://ysw123.xyz/api/auth");
 }
 
 @riverpod

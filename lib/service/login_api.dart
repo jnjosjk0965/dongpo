@@ -10,22 +10,22 @@ abstract class LoginApi {
   factory LoginApi(Dio dio, {String baseUrl}) = _LoginApi;
 
   @POST("/kakao")
-  Future<HttpResponse<LoginResponseModel>> kakaoLogin(
+  Future<LoginResponseModel> kakaoLogin(
     @Body() KakaoLoginRequest body,
   );
 
   @POST("/apple")
-  Future<HttpResponse<LoginResponseModel>> appleLogin(
+  Future<LoginResponseModel> appleLogin(
     @Body() AppleLoginRequest body,
   );
 
   @POST("/apple/continue")
-  Future<HttpResponse<LoginResponseModel>> appleSignUp(
+  Future<LoginResponseModel> appleSignUp(
     @Body() AppleSignUpRequest body,
   );
 
   @POST("/reissue")
-  Future<HttpResponse<LoginResponseModel>> reissue(
+  Future<LoginResponseModel> reissue(
     @Body() RefreshRequest body,
   );
 }

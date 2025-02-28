@@ -1,3 +1,4 @@
+import 'package:dongpo/core/model/social_type.dart';
 import 'package:dongpo/core/theme.dart';
 import 'package:dongpo/model/login/login_response_model.dart';
 import 'package:dongpo/view_model/login/login_vm.dart';
@@ -18,29 +19,31 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF33393F),
-      body: Center(
-        child: Column(
-          children: [
-            Image.asset("assets/images/login.png"),
-            Gap(MediaQuery.of(context).size.height * 0.1),
-            const Text(
-              "동포 시작하기",
-              style: TextStyle(
-                fontFamily: "Chosun",
-                color: AppColors.white,
-                fontSize: 48,
-                fontWeight: FontWeight.w600,
+      body: Consumer(builder: (context, ref, child) {
+        return Center(
+          child: Column(
+            children: [
+              Image.asset("assets/images/login.png"),
+              Gap(MediaQuery.of(context).size.height * 0.1),
+              const Text(
+                "동포 시작하기",
+                style: TextStyle(
+                  fontFamily: "Chosun",
+                  color: AppColors.white,
+                  fontSize: 48,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            Gap(MediaQuery.of(context).size.height * 0.2),
-            // 소셜 로그인 - 애플
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Consumer(builder: (context, ref, child) {
-                return GestureDetector(
+              Gap(MediaQuery.of(context).size.height * 0.2),
+              // 소셜 로그인 - 애플
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                child: GestureDetector(
                   onTap: () async {
-                    final result =
-                        await ref.read(loginVmProvider.notifier).appleLogin();
+                    final result = await ref
+                        .read(loginVmProvider.notifier)
+                        .socialLogin(type: SocialType.apple);
                     switch (result.type) {
                       case LoginResultType.success:
                         if (context.mounted) context.go("/home");
@@ -82,17 +85,17 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                );
-              }),
-            ),
-            // 소셜 로그인 - 카카오
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Consumer(builder: (context, ref, child) {
-                return GestureDetector(
+                ),
+              ),
+              // 소셜 로그인 - 카카오
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                child: GestureDetector(
                   onTap: () async {
-                    final result =
-                        await ref.read(loginVmProvider.notifier).kakaoLogin();
+                    final result = await ref
+                        .read(loginVmProvider.notifier)
+                        .socialLogin(type: SocialType.kakao);
                     switch (result.type) {
                       case LoginResultType.success:
                         if (context.mounted) context.go("/home");
@@ -134,12 +137,12 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                );
-              }),
-            ),
-          ],
-        ),
-      ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

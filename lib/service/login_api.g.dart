@@ -20,14 +20,12 @@ class _LoginApi implements LoginApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<LoginResponseModel>> kakaoLogin(
-    KakaoLoginRequest body,
-  ) async {
+  Future<LoginResponseModel> kakaoLogin(KakaoLoginRequest body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = body;
-    final _options = _setStreamType<HttpResponse<LoginResponseModel>>(
+    final _options = _setStreamType<LoginResponseModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -45,19 +43,16 @@ class _LoginApi implements LoginApi {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
+    return _value;
   }
 
   @override
-  Future<HttpResponse<LoginResponseModel>> appleLogin(
-    AppleLoginRequest body,
-  ) async {
+  Future<LoginResponseModel> appleLogin(AppleLoginRequest body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = body;
-    final _options = _setStreamType<HttpResponse<LoginResponseModel>>(
+    final _options = _setStreamType<LoginResponseModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -75,19 +70,16 @@ class _LoginApi implements LoginApi {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
+    return _value;
   }
 
   @override
-  Future<HttpResponse<LoginResponseModel>> appleSignUp(
-    AppleSignUpRequest body,
-  ) async {
+  Future<LoginResponseModel> appleSignUp(AppleSignUpRequest body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = body;
-    final _options = _setStreamType<HttpResponse<LoginResponseModel>>(
+    final _options = _setStreamType<LoginResponseModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -105,17 +97,16 @@ class _LoginApi implements LoginApi {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
+    return _value;
   }
 
   @override
-  Future<HttpResponse<LoginResponseModel>> reissue(RefreshRequest body) async {
+  Future<LoginResponseModel> reissue(RefreshRequest body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = body;
-    final _options = _setStreamType<HttpResponse<LoginResponseModel>>(
+    final _options = _setStreamType<LoginResponseModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -133,8 +124,7 @@ class _LoginApi implements LoginApi {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
+    return _value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

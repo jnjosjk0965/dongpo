@@ -16,10 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginState {
-  dynamic get isLogin => throw _privateConstructorUsedError;
+  AsyncValue<bool> get loginState => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
-  String? get accessToken => throw _privateConstructorUsedError;
-  String? get refreshToken => throw _privateConstructorUsedError;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,11 +32,7 @@ abstract class $LoginStateCopyWith<$Res> {
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call(
-      {dynamic isLogin,
-      String? email,
-      String? accessToken,
-      String? refreshToken});
+  $Res call({AsyncValue<bool> loginState, String? email});
 }
 
 /// @nodoc
@@ -56,27 +50,17 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLogin = freezed,
+    Object? loginState = null,
     Object? email = freezed,
-    Object? accessToken = freezed,
-    Object? refreshToken = freezed,
   }) {
     return _then(_value.copyWith(
-      isLogin: freezed == isLogin
-          ? _value.isLogin
-          : isLogin // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      loginState: null == loginState
+          ? _value.loginState
+          : loginState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<bool>,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      accessToken: freezed == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      refreshToken: freezed == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -90,11 +74,7 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       __$$LoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {dynamic isLogin,
-      String? email,
-      String? accessToken,
-      String? refreshToken});
+  $Res call({AsyncValue<bool> loginState, String? email});
 }
 
 /// @nodoc
@@ -110,24 +90,17 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLogin = freezed,
+    Object? loginState = null,
     Object? email = freezed,
-    Object? accessToken = freezed,
-    Object? refreshToken = freezed,
   }) {
     return _then(_$LoginStateImpl(
-      isLogin: freezed == isLogin ? _value.isLogin! : isLogin,
+      loginState: null == loginState
+          ? _value.loginState
+          : loginState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<bool>,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      accessToken: freezed == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      refreshToken: freezed == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -137,21 +110,17 @@ class __$$LoginStateImplCopyWithImpl<$Res>
 
 class _$LoginStateImpl implements _LoginState {
   const _$LoginStateImpl(
-      {this.isLogin = false, this.email, this.accessToken, this.refreshToken});
+      {this.loginState = const AsyncValue.loading(), this.email});
 
   @override
   @JsonKey()
-  final dynamic isLogin;
+  final AsyncValue<bool> loginState;
   @override
   final String? email;
-  @override
-  final String? accessToken;
-  @override
-  final String? refreshToken;
 
   @override
   String toString() {
-    return 'LoginState(isLogin: $isLogin, email: $email, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'LoginState(loginState: $loginState, email: $email)';
   }
 
   @override
@@ -159,21 +128,13 @@ class _$LoginStateImpl implements _LoginState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginStateImpl &&
-            const DeepCollectionEquality().equals(other.isLogin, isLogin) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken) &&
-            (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken));
+            (identical(other.loginState, loginState) ||
+                other.loginState == loginState) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isLogin),
-      email,
-      accessToken,
-      refreshToken);
+  int get hashCode => Object.hash(runtimeType, loginState, email);
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -186,19 +147,13 @@ class _$LoginStateImpl implements _LoginState {
 
 abstract class _LoginState implements LoginState {
   const factory _LoginState(
-      {final dynamic isLogin,
-      final String? email,
-      final String? accessToken,
-      final String? refreshToken}) = _$LoginStateImpl;
+      {final AsyncValue<bool> loginState,
+      final String? email}) = _$LoginStateImpl;
 
   @override
-  dynamic get isLogin;
+  AsyncValue<bool> get loginState;
   @override
   String? get email;
-  @override
-  String? get accessToken;
-  @override
-  String? get refreshToken;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
